@@ -7,6 +7,12 @@ from django.utils import timezone
 # User Class Extend from Django User (AbsrtactUser)
 class CustomUser(AbstractUser):
     # choices
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        blank=False,
+        help_text='',  # Custom help text or remove it
+    )
     MALE = 'male'
     FEMALE = 'female'
     CHOICES_SEXE = [
@@ -19,11 +25,13 @@ class CustomUser(AbstractUser):
         choices=CHOICES_SEXE,
         default=FEMALE
     )
-    brith_date = models.DateField(auto_now=False, null=True, blank=True)
-    profile_picture = models.ImageField(upload_to='profiles/')
+    # Don't forget to handle the case of null attribute
+    birth_date = models.DateField(auto_now=False, null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='profiles/', blank=True, null=True)
+    email = models.EmailField(unique=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.username}"
 
 
 # Category Class

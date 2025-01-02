@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Mania - Ludic Quiz Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #FF00FF, #00FFFF);
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            font-family: 'Press Start 2P', cursive;
+        }
+        .cta-button {
+            background-color: #00FF00;
+            color: #000000;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #FFFF00;
+            box-shadow: 0 0 20px #FFFF00;
+        }
+        .feature, .category-card, .testimonial {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .feature:hover, .category-card:hover, .testimonial:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00FFFF;
+        }
+    </style>
+</head>
+<body>
+    <section id="hero">
+        <h1>Welcome to <span style="color: #00FF00;">Quiz Mania</span>!</h1>
+        <p>Test your knowledge, challenge your friends, and win <span style="color: #FFFF00;">epic rewards</span>!</p>
+        <a href="{% url 'signup'%}" class="cta-button">Start Quiz Now!</a>
+    </section>
+    <section id="features">
+        <div class="feature">
+            <img src="icon-trophy.png" alt="Trophy Icon">
+            <h3>Win Epic Prizes</h3>
+            <p>Climb the leaderboard and claim your rewards!</p>
+        </div>
+        <!-- Add more features here -->
+    </section>
+    <section id="categories">
+        <div class="category-card" style="background-color: #FF00FF;">
+            <img src="icon-pop-culture.png" alt="Pop Culture Icon">
+            <h4>Pop Culture</h4>
+        </div>
+        <!-- Add more categories here -->
+    </section>
+    <section id="testimonials">
+        <div class="testimonial">
+            <img src="avatar1.png" alt="User Avatar">
+            <p>"This quiz game is insanely fun! I can't stop playing!"</p>
+            <span>- Jane D.</span>
+        </div>
+        <!-- Add more testimonials here -->
+    </section>
+    <footer>
+        <p>Follow us: [Social Media Icons]</p>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </footer>
+</body>
+</html>
