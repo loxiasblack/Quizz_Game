@@ -7,6 +7,7 @@ from .forms import QuestionAdminForm
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     fields = ['name', 'description', 'category_picture']
+    extra = 1
 
 @admin.register(CustomUser)
 class CustomAdmin(admin.ModelAdmin):

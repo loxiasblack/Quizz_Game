@@ -175,7 +175,7 @@
                              style="height: 200px; object-fit: cover;">
                         <!-- Category Details -->
                         <div class="card-body text-center">
-                            <button class="btn btn-primary">{{category.name}}</button>
+                            <button class="btn btn-primary" onclick=window.location.href="{%url 'session' category_id=category.id%}">{{category.name}}</button>
                         </div>
                     </div>
                 </div>

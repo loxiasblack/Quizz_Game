@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Completed</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #FF00FF, #00FFFF);
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+        }
+        .completed-container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00FF00;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #00FF00;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        p {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+        .home-btn {
+            background-color: #00FF00;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            width: fit-content;
+        }
+        .home-btn:hover {
+            background-color: #FF00FF;
+            transform: scale(1.05);
+        }
+        .decorative-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .decorative-shapes div {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #00FF00;
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+        .decorative-shapes div:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+        }
+        .decorative-shapes div:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            right: 10%;
+        }
+        .decorative-shapes div:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            left: 20%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Shapes -->
+    <div class="decorative-shapes">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Completed Container -->
+    <div class="completed-container animate__animated animate__fadeIn">
+        <h1>Congratulations!</h1>
+        <p>Your final score is: {{ score }}</p>
+        <a href="{% url 'profile' user_id=request.user.id%}" class="home-btn">Return to Home</a>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

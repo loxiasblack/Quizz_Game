@@ -61,7 +61,7 @@ class Question(models.Model):
     points = models.PositiveIntegerField(default=10)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='questions')
     descriptions = models.TextField(max_length=1500, blank=True)
-    question_pictures = models.ImageField(upload_to='question/')
+    question_pictures = models.ImageField(upload_to='question/', blank=True, null=True)
 
     def set_point_by_diffuculty(self):
         """ set the points based on the difficulty level. """
