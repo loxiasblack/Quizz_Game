@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'quizzdb',
         'USER': 'root',
-        'PASSWORD': 'Gradesor3008!',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -138,3 +138,6 @@ AUTH_USER_MODEL = 'myquizz.CustomUser'
 
 # setting the login
 LOGIN_URL = '/quizz/login/'
+
+
+

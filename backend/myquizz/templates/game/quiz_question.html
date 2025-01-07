@@ -58,10 +58,19 @@
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
+        .choice.correct {
+            background-color: #00FF00; /* Green background for correct answer */
+            border-color: #00FF00;
+        }
+        .choice.incorrect {
+            background-color: #FF0000; /* Red background for incorrect answer */
+            border-color: #FF0000;
+        }
         .choice:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px #00FF00;
         }
+        
         .choice label {
             display: block;
             cursor: pointer;
@@ -92,6 +101,21 @@
             overflow: hidden;
             z-index: -1;
         }
+        .next-btn {
+            background-color: #00FFFF;
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            display: none; /* Hidden by default */
+        }
+        .next-btn:hover {
+            background-color: #FF00FF;
+            transform: scale(1.05);
+        }
         .decorative-shapes div {
             position: absolute;
             background: rgba(255, 255, 255, 0.1);
@@ -117,6 +141,37 @@
             bottom: 10%;
             left: 20%;
         }
+        /* New styles for top-left buttons */
+        .top-left-buttons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .top-left-buttons .btn {
+            margin-right: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .top-left-buttons .btn-danger {
+            background-color: #FF00FF;
+            border: none;
+        }
+        .top-left-buttons .btn-danger:hover {
+            background-color: #00FFFF;
+            transform: scale(1.05);
+        }
+        .top-left-buttons .btn-secondary {
+            background-color: #00FFFF;
+            border: none;
+            color: #000;
+        }
+        .top-left-buttons .btn-secondary:hover {
+            background-color: #FF00FF;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -125,6 +180,12 @@
         <div></div>
         <div></div>
         <div></div>
+    </div>
+
+    <!-- Top-Left Buttons -->
+    <div class="top-left-buttons">
+        <a href="{% url 'logout' %}" class="btn btn-secondary animate__animated animate__pulse">Logout</a>
+        <a href="{% url 'quit_game' gamesession.id %}" class="btn btn-secondary animate__animated animate__pulse">Quit Game</a>
     </div>
 
     <!-- Quiz Container -->
@@ -144,6 +205,11 @@
                 {% endfor %}
             </div>
             <button type="submit" class="submit-btn">Submit</button>
+            {% if is_correct %}
+                <div class="feedback {% if is_correct %}correct{% else %}incorrect{% endif %}">
+                    {% if is_correct %}Correct!{% else %}Incorrect.{% endif %}
+                </div>
+            {% endif %}
         </form>
     </div>
 

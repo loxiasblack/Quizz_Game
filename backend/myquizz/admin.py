@@ -2,12 +2,13 @@ from django.contrib import admin
 from .models import Question, Category, Choice, CustomUser
 from .forms import QuestionAdminForm
 # Register your models here.
-
+class QuestionInlince(admin.TabularInline):
+    model = Question
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     fields = ['name', 'description', 'category_picture']
-    extra = 1
+
 
 @admin.register(CustomUser)
 class CustomAdmin(admin.ModelAdmin):

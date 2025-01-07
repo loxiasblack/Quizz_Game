@@ -76,3 +76,8 @@ class QuestionAdminForm(forms.ModelForm):
         if points < 0:
             raise forms.ValidationError("Points must be non-negative.")
         return points
+
+class categoryAdminForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = '__all__'
