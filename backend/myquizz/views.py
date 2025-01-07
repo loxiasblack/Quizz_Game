@@ -4,7 +4,6 @@ from django.views.decorators.cache import never_cache
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login as auth_login
 from django.urls import reverse
-from django.http import HttpResponse
 from .forms import RegisterForms, LoginForm
 from django.contrib import messages
 from django.contrib.auth import logout as auth_logout
@@ -12,6 +11,11 @@ from .models import CustomUser, Question, Category, Choice, GameSession
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .utils import selected_question, display_question_choices
+from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
+from .serializers import QuestionSerializer, ChoiceSerializer
 
 
 # Create your views here. [never_cache] for blocking the browser caching
@@ -157,8 +161,8 @@ def play_quizz(request, category_id):
         return render(request, 'game/quiz_question.html', {
             'question': question,
             'choices': choices,
-            'current_index': current_index + 1,
             'total_questions': len(questions),
+            'current_index': current_index + 1,
             'gamesession': gamesession,
             'is_correct': is_correct,
         })
@@ -166,7 +170,7 @@ def play_quizz(request, category_id):
     return render(request, 'game/quiz_question.html', {
         'question': question,
         'choices': choices,
-        'current_index': current_index + 1,
+        'current_index': current_index,
         'total_questions': len(questions),
         'gamesession': gamesession,
     })
@@ -181,3 +185,24 @@ def quit_game(request, gamesession_id):
     GameSession.objects.get(id=gamesession_id).delete()
     # Redirect the user to a relevant page (e.g., home or profile)
     return redirect(reverse('profile', args=[request.user.id]))
+
+
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['category', 'difficulty']
+    
+    @action(detail=False, methods=['GET'], url_path='by-category/(?P<category_id>\d+)')
+    def by_category(self, request, category_id=None):
+        try:
+            category = Category.objects.get(id=category_id)
+            questions = Question.objects.filter(category=category)
+            serializer = self.get_serializer(questions, many=True)
+            return Response(serializer.data)
+        except Category.DoesNotExist:
+            return Response({"error": "Category not found"}, status=404)
+
+class ChoiceViewSet(viewsets.ModelViewSet):
+    queryset = Choice.objects.all()
+    serializer_class = ChoiceSerializer

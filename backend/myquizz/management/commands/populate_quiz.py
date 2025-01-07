@@ -1,4 +1,6 @@
+import os
 from django.core.management.base import BaseCommand
+from django.core.files import File
 from myquizz.models import Category, Question, Choice
 
 
@@ -6,6 +8,15 @@ class Command(BaseCommand):
     help = 'Populates the database with quiz questions'
     
     def handle(self, *args, **options):
+        # declare the path for the image
+        math_image_path = 'media/category/mathematic.jpg'
+        
+        science_image_path = 'media/category/science.jpeg'
+        economy_image_path = 'media/category/economics.jpg'
+        finance_image_path = 'media/category/finance.jpg'
+        sport_image_path = 'media/category/Sport.jpg'
+        history_image_path = 'media/category/history.jpg'
+        
         math_category, created =  Category.objects.get_or_create(
             name="Mathematic",
         )
@@ -24,6 +35,76 @@ class Command(BaseCommand):
         history_category, created = Category.objects.get_or_create(
             name="History",
         )
+        
+        
+        
+        # Assign the image to the category_picture field
+        if os.path.exists(math_image_path):
+            with open(math_image_path, 'rb') as f:
+                math_category.category_picture.save(
+                    os.path.basename(math_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{math_category.name}' category.")
+        else:
+            print(f"Image not found at {math_image_path}. Skipping image assignment.")
+            
+        if os.path.exists(science_image_path):
+            with open(science_image_path, 'rb') as f:
+                science_category.category_picture.save(
+                    os.path.basename(science_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{science_category.name}' category.")
+        else:
+            print(f"Image not found at {science_image_path}. Skipping image assignment.")
+            
+        if os.path.exists(economy_image_path):
+            with open(economy_image_path, 'rb') as f:
+                economy_category.category_picture.save(
+                    os.path.basename(economy_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{economy_category.name}' category.")
+        else:
+            print(f"Image not found at {economy_image_path}. Skipping image assignment.")
+
+        if os.path.exists(finance_image_path):
+            with open(finance_image_path, 'rb') as f:
+                finance_category.category_picture.save(
+                    os.path.basename(finance_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{finance_category.name}' category.")
+        else:
+            print(f"Image not found at {finance_image_path}. Skipping image assignment.")
+
+        if os.path.exists(history_image_path):
+            with open(history_image_path, 'rb') as f:
+                history_category.category_picture.save(
+                    os.path.basename(history_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{history_category.name}' category.")
+        else:
+            print(f"Image not found at {history_image_path}. Skipping image assignment.")
+
+        if os.path.exists(sport_image_path):
+            with open(sport_image_path, 'rb') as f:
+                sport_category.category_picture.save(
+                    os.path.basename(sport_image_path),  # Save the file with the same name
+                    File(f),  # Pass the file object
+                    save=True  # Save the instance
+                )
+            print(f"Image assigned to '{sport_category.name}' category.")
+        else:
+            print(f"Image not found at {sport_image_path}. Skipping image assignment.")
+        
         
         math_data =  [
             {
