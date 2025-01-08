@@ -10,7 +10,7 @@ router.register(r'choices', ChoiceViewSet)
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('profile/<int:user_id>', profile, name='profile'),
     path('signup/', signup, name='signup'),
     path('login/', login, name='login'),
