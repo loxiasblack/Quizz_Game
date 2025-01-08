@@ -11,6 +11,7 @@ from .models import CustomUser, Question, Category, Choice, GameSession
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .utils import selected_question, display_question_choices
+from collections import defaultdict
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -175,7 +176,8 @@ def play_quizz(request, category_id):
         'gamesession': gamesession,
     })
 
-
+@never_cache
+@login_required
 def quit_game(request, gamesession_id):
     # Clear session data related to the game
     if 'questions' in request.session:
@@ -183,8 +185,26 @@ def quit_game(request, gamesession_id):
     if 'current_index' in request.session:
         del request.session['current_index']
     GameSession.objects.get(id=gamesession_id).delete()
-    # Redirect the user to a relevant page (e.g., home or profile)
+    # Redirect the user to his profile
     return redirect(reverse('profile', args=[request.user.id]))
+
+@never_cache
+@login_required
+def Top_ranking(request):
+    category = Category.objects.all()
+    all_gamesessions = GameSession.objects.order_by('-score')
+    
+    gamesession_by_category = defaultdict(list)
+    for gamesession in all_gamesessions:
+        gamesession_by_category[gamesession.category].append(gamesession)
+    
+    for category, gamesession in gamesession_by_category.items():
+        gamesession_by_category[category] = gamesession[:3]
+    
+    return render(request, 'game/top_ranking.html', {
+        'gamesession_by_category': dict(gamesession_by_category),
+    })
+            
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
@@ -206,3 +226,6 @@ class QuestionViewSet(viewsets.ModelViewSet):
 class ChoiceViewSet(viewsets.ModelViewSet):
     queryset = Choice.objects.all()
     serializer_class = ChoiceSerializer
+
+
+

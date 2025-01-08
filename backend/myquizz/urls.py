@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import profile, signup, login, landing, logout, upload_profile_picture, select_catgory, play_quizz, quit_game, QuestionViewSet, ChoiceViewSet
+from .views import profile, signup, login, landing, logout, upload_profile_picture, select_catgory, play_quizz, quit_game, QuestionViewSet, ChoiceViewSet, Top_ranking
 from django.contrib.auth import views
 from rest_framework.routers import DefaultRouter
 
@@ -20,6 +20,7 @@ urlpatterns = [
     path('category/<int:user_id>', select_catgory, name='select_category'),
     path('session/<int:category_id>', play_quizz, name="session"),
     path('quit_game/<int:gamesession_id>', quit_game, name='quit_game'),
+    path('top_ranking/', Top_ranking, name="top_ranking"),
 ]
 
 
