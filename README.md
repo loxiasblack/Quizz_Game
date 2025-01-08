@@ -34,6 +34,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure Database Connection
+
 Navigate to `backend/backend/settings.py` and update the `DATABASES` configuration with your MySQL credentials:
 
 ```python
@@ -47,10 +48,12 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
 ```
 
 ### 5. Initialize the Quiz Data
 ```bash
+python manange.py migrate
 python manage.py populate_quiz
 ```
 
