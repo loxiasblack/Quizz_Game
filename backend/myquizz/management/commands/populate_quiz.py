@@ -2396,6 +2396,449 @@ class Command(BaseCommand):
             },
         ]
         
+        sport_data = [
+            {
+                "question": "Which sport is played at Wimbledon?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Football", "correct": False},
+                    {"text": "Cricket", "correct": False},
+                    {"text": "Rugby", "correct": False},
+                    {"text": "Tennis", "correct": True}
+                ]
+            },
+            {
+                "question": "In which sport would you perform a slam dunk?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Volleyball", "correct": False},
+                    {"text": "Baseball", "correct": False},
+                    {"text": "Basketball", "correct": True},
+                    {"text": "Tennis", "correct": False}
+                ]
+            },
+            {
+                "question": "How many players are on a standard soccer team during a match?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "9", "correct": False},
+                    {"text": "10", "correct": False},
+                    {"text": "11", "correct": True},
+                    {"text": "12", "correct": False}
+                ]
+            },
+            {
+                "question": "What color is a standard tennis ball?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "White", "correct": False},
+                    {"text": "Yellow-green", "correct": True},
+                    {"text": "Orange", "correct": False},
+                    {"text": "Red", "correct": False}
+                ]
+            },
+            {
+                "question": "In which sport do you score a touchdown?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Rugby", "correct": False},
+                    {"text": "Soccer", "correct": False},
+                    {"text": "American Football", "correct": True},
+                    {"text": "Hockey", "correct": False}
+                ]
+            },
+            {
+                "question": "What sport is played on ice with a puck?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Ice Hockey", "correct": True},
+                    {"text": "Curling", "correct": False},
+                    {"text": "Figure Skating", "correct": False},
+                    {"text": "Speed Skating", "correct": False}
+                ]
+            },
+            {
+                "question": "How many rings are on the Olympic flag?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "3", "correct": False},
+                    {"text": "4", "correct": False},
+                    {"text": "5", "correct": True},
+                    {"text": "6", "correct": False}
+                ]
+            },
+            {
+                "question": "In which sport would you use a driver?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Tennis", "correct": False},
+                    {"text": "Golf", "correct": True},
+                    {"text": "Baseball", "correct": False},
+                    {"text": "Cricket", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the main color of the Italian national soccer team's jersey?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Red", "correct": False},
+                    {"text": "Green", "correct": False},
+                    {"text": "White", "correct": False},
+                    {"text": "Blue", "correct": True}
+                ]
+            },
+            {
+                "question": "How many points is a regular basket worth in basketball?",
+                "difficulty": "Easy",
+                "descriptions": "",
+                "choices": [
+                    {"text": "1", "correct": False},
+                    {"text": "2", "correct": True},
+                    {"text": "3", "correct": False},
+                    {"text": "4", "correct": False}
+                ]
+            },
+            {
+                "question": "Which country won the first FIFA World Cup in 1930?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Uruguay", "correct": True},
+                    {"text": "Argentina", "correct": False},
+                    {"text": "Brazil", "correct": False},
+                    {"text": "Italy", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the diameter of a basketball hoop in inches?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "16", "correct": False},
+                    {"text": "18", "correct": True},
+                    {"text": "20", "correct": False},
+                    {"text": "22", "correct": False}
+                ]
+            },
+            {
+                "question": "In which year did women first compete in the modern Olympics?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "1896", "correct": False},
+                    {"text": "1900", "correct": True},
+                    {"text": "1904", "correct": False},
+                    {"text": "1908", "correct": False}
+                ]
+            },
+            {
+                "question": "How long is an Olympic swimming pool?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "25 meters", "correct": False},
+                    {"text": "50 meters", "correct": True},
+                    {"text": "75 meters", "correct": False},
+                    {"text": "100 meters", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the maximum number of clubs allowed in a golf bag during a round?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "10", "correct": False},
+                    {"text": "12", "correct": False},
+                    {"text": "14", "correct": True},
+                    {"text": "16", "correct": False}
+                ]
+            },
+            {
+                "question": "In tennis, what comes after deuce?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Game point", "correct": False},
+                    {"text": "Match point", "correct": False},
+                    {"text": "Set point", "correct": False},
+                    {"text": "Advantage", "correct": True}
+                ]
+            },
+            {
+                "question": "How many weight classes are there in professional boxing?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "15", "correct": False},
+                    {"text": "17", "correct": True},
+                    {"text": "19", "correct": False},
+                    {"text": "21", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the standard length of a marathon in kilometers?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "40.2", "correct": False},
+                    {"text": "41.2", "correct": False},
+                    {"text": "42.2", "correct": True},
+                    {"text": "43.2", "correct": False}
+                ]
+            },
+            {
+                "question": "In which sport would you perform a pike position?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Diving", "correct": True},
+                    {"text": "Wrestling", "correct": False},
+                    {"text": "Skating", "correct": False},
+                    {"text": "Gymnastics", "correct": False}
+                ]
+            },
+            {
+                "question": "How many players are on a standard volleyball team on court?",
+                "difficulty": "Medium",
+                "descriptions": "",
+                "choices": [
+                    {"text": "5", "correct": False},
+                    {"text": "6", "correct": True},
+                    {"text": "7", "correct": False},
+                    {"text": "8", "correct": False}
+                ]
+            },
+            {
+                "question": "Who was the first gymnast to score a perfect 10 in the Olympics?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Larisa Latynina", "correct": False},
+                    {"text": "Olga Korbut", "correct": False},
+                    {"text": "Mary Lou Retton", "correct": False},
+                    {"text": "Nadia Comăneci", "correct": True}
+                ]
+            },
+            {
+                "question": "In cricket, what is the length of the pitch in yards?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "22", "correct": True},
+                    {"text": "24", "correct": False},
+                    {"text": "28", "correct": False},
+                    {"text": "36", "correct": False}
+                ]
+            },
+            {
+                "question": "Which tennis player has won the most Grand Slam singles titles?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Roger Federer", "correct": False},
+                    {"text": "Rafael Nadal", "correct": True},
+                    {"text": "Novak Djokovic", "correct": False},
+                    {"text": "Pete Sampras", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the \"Fosbury Flop\"?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "A swimming technique", "correct": False},
+                    {"text": "A high jump technique", "correct": True},
+                    {"text": "A gymnastics move", "correct": False},
+                    {"text": "A diving position", "correct": False}
+                ]
+            },
+            {
+                "question": "In which year was the first Super Bowl played?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "1964", "correct": False},
+                    {"text": "1965", "correct": False},
+                    {"text": "1966", "correct": False},
+                    {"text": "1967", "correct": True}
+                ]
+            },
+            {
+                "question": "What is the combined weight of all 16 balls in snooker?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "985.5 oz", "correct": False},
+                    {"text": "995.5 oz", "correct": True},
+                    {"text": "1005.5 oz", "correct": False},
+                    {"text": "1015.5 oz", "correct": False}
+                ]
+            },
+            {
+                "question": "Which country invented badminton?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "China", "correct": False},
+                    {"text": "England", "correct": False},
+                    {"text": "India", "correct": True},
+                    {"text": "Malaysia", "correct": False}
+                ]
+            },
+            {
+                "question": "How many different ways can a chess game be played in the first four moves?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "318,979", "correct": False},
+                    {"text": "418,979", "correct": False},
+                    {"text": "518,979", "correct": False},
+                    {"text": "318,979,564,000", "correct": True}
+                ]
+            },
+            {
+                "question": "What is the maximum time allowed to look for a lost golf ball?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "2 minutes", "correct": False},
+                    {"text": "3 minutes", "correct": True},
+                    {"text": "4 minutes", "correct": False},
+                    {"text": "5 minutes", "correct": False}
+                ]
+            },
+            {
+                "question": "In Formula 1, what does a blue flag indicate?",
+                "difficulty": "Hard",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Rain warning", "correct": False},
+                    {"text": "Track obstruction", "correct": False},
+                    {"text": "Faster car approaching", "correct": True},
+                    {"text": "Final lap", "correct": False}
+                ]
+            },
+            {
+                "question": "What was the original diameter of a basketball hoop when the game was invented?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "18 inches", "correct": True},
+                    {"text": "16 inches", "correct": False},
+                    {"text": "20 inches", "correct": False},
+                    {"text": "15 inches", "correct": False}
+                ]
+            },
+            {
+                "question": "Which cricket bowler has the best bowling figures in a Test innings?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Jim Laker", "correct": False},
+                    {"text": "Anil Kumble", "correct": True},
+                    {"text": "Shane Warne", "correct": False},
+                    {"text": "Muttiah Muralitharan", "correct": False}
+                ]
+            },
+            {
+                "question": "In what year did the Tour de France introduce time trials?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "1932", "correct": False},
+                    {"text": "1934", "correct": True},
+                    {"text": "1938", "correct": False},
+                    {"text": "1940", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the \"Simpson Desert Rule\" in Australian Rules Football?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Field size regulation", "correct": False},
+                    {"text": "Player substitution rule", "correct": False},
+                    {"text": "Heat policy", "correct": True},
+                    {"text": "Game timing rule", "correct": False}
+                ]
+            },
+            {
+                "question": "Who holds the record for the longest verified boxing match in history?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Andy Bowen vs Jack Burke", "correct": True},
+                    {"text": "Joe Gans vs Battling Nelson", "correct": False},
+                    {"text": "Young Ah Go vs Gentleman Jim Corbett", "correct": False},
+                    {"text": "John L. Sullivan vs Jake Kilrain", "correct": False}
+                ]
+            },
+            {
+                "question": "What was the original name of badminton?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Shuttlecock", "correct": False},
+                    {"text": "Poona", "correct": True},
+                    {"text": "Battledore", "correct": False},
+                    {"text": "Federball", "correct": False}
+                ]
+            },
+            {
+                "question": "In Olympic archery, what is the exact distance between the archer and the target?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "70 meters", "correct": True},
+                    {"text": "68 meters", "correct": False},
+                    {"text": "72 meters", "correct": False},
+                    {"text": "74 meters", "correct": False}
+                ]
+            },
+            {
+                "question": "What is the minimum depth of a bunker in professional golf according to USGA rules?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "2 inches", "correct": False},
+                    {"text": "3 inches", "correct": False},
+                    {"text": "4 inches", "correct": True},
+                    {"text": "5 inches", "correct": False}
+                ]
+            },
+            {
+                "question": "In competitive rowing, what is the \"Martinetti Rule\"?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "Oar length regulation", "correct": False},
+                    {"text": "Boat weight calculation", "correct": False},
+                    {"text": "Steering mechanism requirement", "correct": True},
+                    {"text": "Race start procedure", "correct": False}
+                ]
+            },
+            {
+                "question": "What was the original diameter of a polo field before standardization?",
+                "difficulty": "Expert",
+                "descriptions": "",
+                "choices": [
+                    {"text": "200 yards", "correct": False},
+                    {"text": "275 yards", "correct": False},
+                    {"text": "300 yards", "correct": False},
+                    {"text": "325 yards", "correct": False}
+                ]
+            },
+        ]
+        
         def create_questions(category, questions_data):
             for q_data in questions_data:
                 question = Question.objects.create(
@@ -2414,6 +2857,7 @@ class Command(BaseCommand):
             
 
         # Populate questions for each category
+        create_questions(sport_category, sport_data)
         create_questions(math_category, math_data)
         create_questions(science_category, science_data)
         create_questions(finance_category, finance_data)
