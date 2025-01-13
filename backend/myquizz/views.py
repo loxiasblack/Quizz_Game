@@ -146,10 +146,14 @@ def play_quizz(request, category_id):
     choices = display_question_choices(question_id)
     
     if request.method == 'POST':
+        
         selected_choice_id = request.POST.get('choice')
+        
         if selected_choice_id:
+            
             selected_choice = Choice.objects.get(id=selected_choice_id)
             is_correct = selected_choice.correct
+            
             if is_correct:
                 gamesession.score += question.points
                 gamesession.save()
@@ -163,7 +167,14 @@ def play_quizz(request, category_id):
             request.session['current_index'] += 1
             new_current_index = request.session['current_index']
             
-            if new_current_index < len(questions):
+            
+            if new_current_index >= len(questions):
+                gamesession.mark_completed()
+                del request.session['questions']
+                del request.session['current_index']
+                
+                return render(request, 'game/quiz_completed.html', {'gamesession': gamesession})
+            else:
                 next_question_id  = questions[new_current_index]
                 next_question = Question.objects.get(id=next_question_id)
                 next_choices = display_question_choices(next_question_id)
