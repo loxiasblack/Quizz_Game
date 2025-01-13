@@ -108,7 +108,6 @@ def select_catgory(request, user_id):
 @login_required
 def play_quizz(request, category_id):
     # Fetch User and Category
-   
     user = request.user if request.user.is_authenticated else None
     category = Category.objects.get(id=category_id)
     
@@ -129,7 +128,7 @@ def play_quizz(request, category_id):
         questions = selected_question(category_id)
         request.session['questions'] = questions
         request.session['current_index'] = 0
-        
+    
     questions = request.session['questions']
     current_index = request.session['current_index']
     
@@ -144,7 +143,6 @@ def play_quizz(request, category_id):
     # Fetch the current question and it's choices
     question_id = questions[current_index]
     question = Question.objects.get(id=question_id)
-    
     choices = display_question_choices(question_id)
     
     if request.method == 'POST':
@@ -155,26 +153,38 @@ def play_quizz(request, category_id):
             if is_correct:
                 gamesession.score += question.points
                 gamesession.save()
+            
+            result = {
+                'question': question,
+                'is_correct': is_correct,
+                'selected_choice': selected_choice
+            }
+            
             request.session['current_index'] += 1
-            gamesession.current_question = question
-            print(gamesession.score)
+            new_current_index = request.session['current_index']
+            
+            if new_current_index < len(questions):
+                next_question_id  = questions[new_current_index]
+                next_question = Question.objects.get(id=next_question_id)
+                next_choices = display_question_choices(next_question_id)
             
         return render(request, 'game/quiz_question.html', {
-            'question': question,
-            'choices': choices,
+            'question': next_question,
+            'choices': next_choices,
             'total_questions': len(questions),
-            'current_index': current_index + 1,
+            'current_index': new_current_index + 1,
             'gamesession': gamesession,
-            'is_correct': is_correct,
+            'is_correct': result['is_correct'],
         })
     
     return render(request, 'game/quiz_question.html', {
         'question': question,
         'choices': choices,
-        'current_index': current_index,
+        'current_index': current_index + 1,
         'total_questions': len(questions),
         'gamesession': gamesession,
     })
+
 
 @never_cache
 @login_required
@@ -187,6 +197,7 @@ def quit_game(request, gamesession_id):
     GameSession.objects.get(id=gamesession_id).delete()
     # Redirect the user to his profile
     return redirect(reverse('profile', args=[request.user.id]))
+
 
 @never_cache
 @login_required
